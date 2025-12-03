@@ -1,0 +1,6 @@
+# Docker MySQL data
+docker/mysql/data/
+
+# IDEs
+.vscode/
+.idea/
