@@ -1,5 +1,90 @@
 # flea-market-app
 
+## ER図
+```mermaid
+erDiagram
+  users ||--o{ items: "出品"
+  users ||--o{ purchases: "購入"
+  users ||--o{ favorites: "いいね"
+  users ||--o{ comments: "コメント"
+  items ||--|| purchases: "購入される"
+  items ||--o{ favorites: "いいねされる"
+  items ||--o{ comments: "コメントされる"
+  categories ||--o{ items: "分類"
+  conditions ||--o{ items: "状態"
+
+  users {
+    bigint id PK
+    varchar(255) name "NOT NULL"
+    varchar(255) email "NOT NULL, UNIQUE"
+    varchar(255) password "NOT NULL"
+    timestamp email_verified_at
+    varchar(255) profile_image
+    varchar(8) postal_code
+    varchar(255) address
+    varchar(255) building
+    timestamp created_at "NOT NULL"
+    timestamp updated_at "NOT NULL"
+  }
+
+  items {
+    bigint id PK
+    bigint user_id FK "NOT NULL"
+    varchar(255) name "NOT NULL"
+    text description "NOT NULL"
+    int price "NOT NULL"
+    varchar(255) image "NOT NULL"
+    bigint condition_id FK "NOT NULL"
+    bigint category_id FK "NOT NULL"
+    boolean is_sold "NOT NULL"
+    timestamp created_at "NOT NULL"
+    timestamp updated_at "NOT NULL"
+  }
+
+  categories {
+    bigint id PK
+    varchar(255) name "NOT NULL"
+    timestamp created_at "NOT NULL"
+    timestamp updated_at "NOT NULL"
+  }
+
+  conditions {
+    bigint id PK
+    varchar(255) name "NOT NULL"
+    timestamp created_at "NOT NULL"
+    timestamp updated_at "NOT NULL"
+  }
+
+  purchases {
+    bigint id PK
+    bigint item_id FK "NOT NULL"
+    bigint buyer_id FK "NOT NULL"
+    varchar(50) payment_method "NOT NULL"
+    varchar(8) postal_code "NOT NULL"
+    varchar(255) address "NOT NULL"
+    varchar(255) building
+    timestamp created_at "NOT NULL"
+    timestamp updated_at "NOT NULL"
+  }
+
+  favorites {
+    bigint id PK
+    bigint user_id FK "NOT NULL"
+    bigint item_id FK "NOT NULL"
+    timestamp created_at "NOT NULL"
+    timestamp updated_at "NOT NULL"
+  }
+
+  comments {
+    bigint id PK
+    bigint user_id FK "NOT NULL"
+    bigint item_id FK "NOT NULL"
+    text content "NOT NULL"
+    timestamp created_at "NOT NULL"
+    timestamp updated_at "NOT NULL"
+  }
+```
+
 ## テーブル設計
 
 ### 1. users (ユーザー)
