@@ -3,15 +3,15 @@
 ## ER図
 ```mermaid
 erDiagram
-  users ||--o{ items: "出品"
-  users ||--o{ purchases: "購入"
-  users ||--o{ favorites: "いいね"
-  users ||--o{ comments: "コメント"
-  items ||--|| purchases: "購入される"
-  items ||--o{ favorites: "いいねされる"
-  items ||--o{ comments: "コメントされる"
-  categories ||--o{ items: "分類"
-  conditions ||--o{ items: "状態"
+  categories ||--o{ items: ""
+  conditions ||--o{ items: ""
+  users ||--o{ items: ""
+  users ||--o{ favorites: ""
+  users ||--o{ comments: ""
+  users ||--o{ purchases: ""
+  items ||--o{ favorites: ""
+  items ||--o{ comments: ""
+  items ||--|| purchases: ""
 
   users {
     bigint id PK
