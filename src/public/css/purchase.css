@@ -1,0 +1,188 @@
+/* 購入画面全体のコンテナ */
+.purchase-container {
+    max-width: 1200px;  /* 最大幅1200px */
+    margin: 0 auto;  /* 中央寄せ */
+    padding: 40px 20px;  /* 内側の余白 */
+}
+
+/* 購入コンテンツ（左右2カラム） */
+.purchase-content {
+    display: flex;  /* フレックスボックスで横並び */
+    gap: 40px;  /* 左右の隙間 */
+    align-items: flex-start;  /* 上端揃え */
+}
+
+/* 左側セクション */
+.purchase-left {
+    flex: 1;  /* 余った空間を使う */
+}
+
+/* 商品情報エリア */
+.product-info {
+    display: flex;  /* フレックスボックスで横並び */
+    gap: 20px;  /* 画像と詳細の隙間 */
+    padding-bottom: 30px;  /* 下に余白 */
+    border-bottom: 1px solid #ddd;  /* 下に線 */
+    margin-bottom: 30px;  /* 下に余白 */
+}
+
+/* 商品画像 */
+.product-image {
+    width: 120px;  /* 幅120px */
+    height: 120px;  /* 高さ120px */
+    background-color: #d3d3d3;  /* グレー背景 */
+    display: flex;  /* フレックスボックス */
+    align-items: center;  /* 縦方向中央揃え */
+    justify-content: center;  /* 横方向中央揃え */
+    border-radius: 4px;  /* 角を丸く */
+    flex-shrink: 0;  /* 縮小しない */
+}
+
+.product-image span {
+    font-size: 12px;
+    color: #666;  /* グレー文字 */
+}
+
+/* 商品詳細 */
+.product-details {
+    display: flex;  /* フレックスボックス */
+    flex-direction: column;  /* 縦並び */
+    justify-content: center;  /* 縦方向中央揃え */
+}
+
+.product-name {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 10px;  /* 下に余白 */
+}
+
+.product-price {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+/* セクションタイトル */
+.section-title {
+    font-size: 16px;
+    font-weight: bold;
+    margin-bottom: 15px;  /* 下に余白 */
+}
+
+/* 支払い方法セクション */
+.payment-section {
+    padding-bottom: 30px;  /* 下に余白 */
+    border-bottom: 1px solid #ddd;  /* 下に線 */
+    margin-bottom: 30px;  /* 下に余白 */
+}
+
+/* 支払い方法セレクトボックス */
+.payment-select {
+    width: 100%;  /* 幅いっぱい */
+    padding: 12px;  /* 内側の余白 */
+    font-size: 14px;
+    border: 1px solid #ccc;  /* グレーの枠線 */
+    border-radius: 4px;  /* 角を丸く */
+    background-color: #fff;  /* 白背景 */
+    cursor: pointer;  /* カーソルをポインターに */
+}
+
+/* 配送先セクション */
+.shipping-section {
+    padding-bottom: 30px;  /* 下に余白 */
+}
+
+/* セクションヘッダー（タイトルと変更リンク） */
+.section-header {
+    display: flex;  /* フレックスボックスで横並び */
+    justify-content: space-between;  /* 両端に配置 */
+    align-items: center;  /* 縦方向中央揃え */
+    margin-bottom: 15px;  /* 下に余白 */
+}
+
+/* 変更リンク */
+.change-link {
+    color: #007bff;  /* 青色 */
+    text-decoration: none;  /* 下線なし */
+    font-size: 14px;
+}
+
+.change-link:hover {
+    text-decoration: underline;  /* ホバー時に下線 */
+}
+
+/* 配送先住所 */
+.shipping-address {
+    font-size: 14px;
+    line-height: 1.8;  /* 行間を広めに */
+}
+
+.shipping-address p {
+    margin-bottom: 5px;  /* 下に余白 */
+}
+
+/* 右側セクション */
+.purchase-right {
+    width: 350px;  /* 固定幅350px */
+    flex-shrink: 0;  /* 縮小しない */
+}
+
+/* サマリーボックス */
+.summary-box {
+    border: 1px solid #ddd;  /* グレーの枠線 */
+    border-radius: 4px;  /* 角を丸く */
+    padding: 20px;  /* 内側の余白 */
+}
+
+/* サマリーテーブル */
+.summary-table {
+    width: 100%;  /* 幅いっぱい */
+    margin-bottom: 20px;  /* 下に余白 */
+}
+
+.summary-table tr {
+    border-bottom: 1px solid #ddd;  /* 下に線 */
+}
+
+.summary-table th,
+.summary-table td {
+    padding: 15px 0;  /* 上下の余白 */
+    text-align: left;  /* 左揃え */
+}
+
+.summary-table th {
+    font-weight: normal;
+    color: #666;  /* グレー文字 */
+}
+
+.summary-table td {
+    text-align: right;  /* 右揃え */
+    font-weight: bold;
+}
+
+/* 購入ボタン */
+.purchase-button {
+    width: 100%;  /* 幅いっぱい */
+    padding: 15px;  /* 内側の余白 */
+    background-color: #ff5757;  /* 赤背景 */
+    color: #fff;  /* 白文字 */
+    border: none;  /* 枠線なし */
+    border-radius: 4px;  /* 角を丸く */
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;  /* カーソルをポインターに */
+}
+
+.purchase-button:hover {
+    background-color: #ff3d3d;  /* ホバー時により濃い赤 */
+}
+
+/* レスポンシブ対応：タブレット・スマホ */
+@media (max-width: 768px) {
+    .purchase-content {
+        flex-direction: column;  /* 縦並びに変更 */
+    }
+    
+    .purchase-right {
+        width: 100%;  /* 幅いっぱい */
+    }
+}

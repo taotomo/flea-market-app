@@ -1,0 +1,76 @@
+/* メール認証誘導画面全体のコンテナ */
+.verification-container {
+    max-width: 600px;  /* 最大幅600px */
+    margin: 80px auto;  /* 上下80px、左右中央寄せ */
+    text-align: center;  /* テキストを中央揃え */
+}
+
+/* 認証メッセージエリア */
+.verification-message {
+    margin-bottom: 40px;  /* 下に余白 */
+}
+
+/* メッセージ本文 */
+.verification-message p {
+    font-size: 16px;
+    line-height: 1.8;  /* 行間を広めに */
+    margin-bottom: 10px;  /* 段落間の余白 */
+}
+
+/* 認証ボタン */
+.verification-button {
+    padding: 12px 40px;  /* 内側の余白 */
+    font-size: 16px;
+    color: #333;  /* 黒文字 */
+    background-color: #fff;  /* 白背景 */
+    border: 1px solid #333;  /* 黒枠 */
+    border-radius: 4px;  /* 角を丸く */
+    cursor: pointer;  /* カーソルをポインターに */
+    margin-bottom: 30px;  /* 下に余白 */
+}
+
+/* 認証ボタンのホバー状態 */
+.verification-button:hover {
+    background-color: #f5f5f5;  /* 薄いグレー背景 */
+}
+
+/* 再送リンクエリア */
+.resend-link {
+    font-size: 14px;
+}
+
+/* 再送リンク */
+.resend-link a {
+    color: #007bff;  /* 青色 */
+    text-decoration: none;  /* 下線なし */
+}
+
+/* 再送リンクのホバー状態 */
+.resend-link a:hover {
+    text-decoration: underline;  /* 下線を表示 */
+}
+
+/* レスポンシブ対応：タブレット */
+@media (max-width: 768px) {
+    .verification-container {
+        max-width: 90%;  /* 幅を広げる */
+        margin: 60px auto;  /* 上下の余白を少なく */
+        padding: 0 20px;  /* 左右に余白を追加 */
+    }
+}
+
+/* レスポンシブ対応：スマホ */
+@media (max-width: 480px) {
+    .verification-container {
+        margin: 40px auto;  /* 上下の余白をさらに少なく */
+    }
+    
+    .verification-message p {
+        font-size: 14px;  /* 文字を小さく */
+    }
+    
+    .verification-button {
+        padding: 12px 30px;  /* ボタンを小さく */
+        font-size: 14px;  /* 文字を小さく */
+    }
+}

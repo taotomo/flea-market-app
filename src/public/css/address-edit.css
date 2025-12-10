@@ -1,0 +1,67 @@
+/* 住所変更画面全体のコンテナ */
+.address-edit-container {
+    max-width: 600px;  /* 最大幅600px */
+    margin: 60px auto;  /* 上下60px、左右中央寄せ */
+    padding: 20px;  /* 内側の余白 */
+}
+
+/* ページタイトル */
+.page-title {
+    font-size: 24px;
+    font-weight: bold;
+    text-align: center;  /* 中央揃え */
+    margin-bottom: 40px;  /* 下に余白 */
+}
+
+/* フォーム入力グループ */
+.form-group {
+    margin-bottom: 25px;  /* 各グループの下に余白 */
+}
+
+/* フォームラベル */
+.form-group label {
+    display: block;  /* ブロック要素として表示（改行される） */
+    font-size: 14px;
+    font-weight: bold;  /* 太字 */
+    margin-bottom: 8px;  /* ラベルと入力欄の間に余白 */
+}
+
+/* フォーム入力欄 */
+.form-group input {
+    width: 100%;  /* 幅いっぱい */
+    padding: 12px;  /* 内側の余白 */
+    font-size: 14px;
+    border: 1px solid #ccc;  /* グレーの枠線 */
+    border-radius: 4px;  /* 角を丸く */
+}
+
+/* プレースホルダーの色 */
+.form-group input::placeholder {
+    color: #999;  /* 薄いグレー */
+}
+
+/* 更新ボタン */
+.update-button {
+    width: 100%;  /* 幅いっぱい */
+    padding: 15px;  /* 内側の余白 */
+    background-color: #ff5757;  /* 赤背景 */
+    color: #fff;  /* 白文字 */
+    border: none;  /* 枠線なし */
+    border-radius: 4px;  /* 角を丸く */
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;  /* カーソルをポインターに */
+    margin-top: 20px;  /* 上に余白 */
+}
+
+/* 更新ボタンのホバー状態 */
+.update-button:hover {
+    background-color: #ff3d3d;  /* ホバー時により濃い赤 */
+}
+
+/* レスポンシブ対応：スマホ */
+@media (max-width: 480px) {
+    .address-edit-container {
+        margin: 40px auto;  /* 上下の余白を少なく */
+    }
+}

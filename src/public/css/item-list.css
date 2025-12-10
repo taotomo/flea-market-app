@@ -1,0 +1,86 @@
+/* 商品一覧コンテナ */
+.item-list-container {
+    max-width: 1200px;  /* 最大幅を1200pxに制限 */
+    margin: 0 auto;  /* 中央寄せ */
+    padding: 20px;  /* 内側の余白 */
+}
+
+/* タブ切り替え */
+.tabs {
+    display: flex;  /* 横並び */
+    gap: 20px;  /* タブ間の隙間 */
+    margin-bottom: 30px;  /* 下に余白 */
+    border-bottom: 1px solid #ddd;  /* 下に線 */
+}
+
+.tab {
+    padding: 10px 20px;  /* 内側の余白 */
+    text-decoration: none;  /* 下線を消す */
+    color: #999;  /* グレー文字 */
+    border-bottom: 2px solid transparent;  /* 透明な下線（スペース確保） */
+    transition: all 0.3s;  /* アニメーション */
+}
+
+.tab.active {
+    color: #000;  /* 黒文字 */
+    border-bottom: 2px solid #000;  /* 黒い下線 */
+}
+
+.tab:hover {
+    color: #000;  /* ホバー時は黒文字 */
+}
+
+/* 商品グリッド */
+.items-grid {
+    display: grid;  /* グリッドレイアウト */
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));  /* 自動的に列を作成 */
+    gap: 30px;  /* カード間の隙間 */
+}
+
+/* 商品カード */
+.item-card {
+    background-color: #fff;  /* 白背景 */
+    border-radius: 8px;  /* 角を丸く */
+    overflow: hidden;  /* はみ出し部分を隠す */
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);  /* 影 */
+    transition: transform 0.3s;  /* アニメーション */
+    cursor: pointer;  /* カーソルをポインターに */
+}
+
+.item-card:hover {
+    transform: translateY(-5px);  /* ホバー時に少し浮かせる */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);  /* 影を濃く */
+}
+
+/* 商品画像 */
+.item-image {
+    width: 100%;  /* 幅いっぱい */
+    height: 250px;  /* 高さ固定 */
+    object-fit: cover;  /* トリミングして表示 */
+    background-color: #f0f0f0;  /* 画像がない場合のグレー背景 */
+}
+
+/* 商品情報エリア */
+.item-info {
+    padding: 15px;  /* 内側の余白 */
+}
+
+/* 商品名 */
+.item-name {
+    font-size: 16px;  /* 文字サイズ */
+    font-weight: bold;  /* 太字 */
+    margin-bottom: 10px;  /* 下に余白 */
+    color: #333;  /* ダークグレー */
+}
+
+/* レスポンシブ対応 */
+@media (max-width: 768px) {
+    .items-grid {
+        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));  /* スマホでは小さく */
+        gap: 15px;  /* 隙間を狭く */
+    }
+    
+    .item-image {
+        height: 150px;  /* 画像を小さく */
+    }
+}

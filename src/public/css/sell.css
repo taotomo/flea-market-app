@@ -1,0 +1,198 @@
+/* 出品画面全体のコンテナ */
+.sell-container {
+    max-width: 700px;  /* 最大幅700px */
+    margin: 40px auto;  /* 上下40px、左右中央寄せ */
+    padding: 20px;  /* 内側の余白 */
+}
+
+/* ページタイトル */
+.page-title {
+    font-size: 24px;
+    font-weight: bold;
+    text-align: center;  /* 中央揃え */
+    margin-bottom: 40px;  /* 下に余白 */
+}
+
+/* フォームセクション */
+.form-section {
+    margin-bottom: 40px;  /* 各セクションの下に余白 */
+    padding-bottom: 30px;  /* 下に余白 */
+    border-bottom: 1px solid #ddd;  /* 下に線 */
+}
+
+.form-section:last-of-type {
+    border-bottom: none;  /* 最後のセクションは線なし */
+}
+
+/* セクションラベル */
+.section-label {
+    display: block;  /* ブロック要素 */
+    font-size: 16px;
+    font-weight: bold;
+    margin-bottom: 15px;  /* 下に余白 */
+}
+
+/* セクションタイトル */
+.section-title {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 20px;  /* 下に余白 */
+}
+
+/* 画像アップロードエリア */
+.image-upload-area {
+    border: 2px dashed #ddd;  /* 点線の枠 */
+    border-radius: 4px;  /* 角を丸く */
+    padding: 40px;  /* 内側の余白 */
+    text-align: center;  /* 中央揃え */
+    background-color: #f9f9f9;  /* 薄いグレー背景 */
+}
+
+/* アップロードラベル */
+.upload-label {
+    display: inline-block;  /* インラインブロック */
+    padding: 10px 30px;  /* 内側の余白 */
+    background-color: #ff5757;  /* 赤背景 */
+    color: #fff;  /* 白文字 */
+    border-radius: 4px;  /* 角を丸く */
+    cursor: pointer;  /* カーソルをポインターに */
+    font-size: 14px;
+}
+
+.upload-label:hover {
+    background-color: #ff3d3d;  /* ホバー時により濃い赤 */
+}
+
+/* フォーム入力グループ */
+.form-group {
+    margin-bottom: 25px;  /* 各グループの下に余白 */
+}
+
+.form-group label {
+    display: block;  /* ブロック要素 */
+    font-size: 14px;
+    font-weight: bold;
+    margin-bottom: 10px;  /* ラベルと入力欄の間に余白 */
+}
+
+/* カテゴリータグエリア */
+.category-tags {
+    display: flex;  /* フレックスボックス */
+    flex-wrap: wrap;  /* 折り返し可能 */
+    gap: 10px;  /* タグ間の隙間 */
+}
+
+/* カテゴリータグ */
+.category-tag {
+    display: inline-block;  /* インラインブロック */
+    padding: 8px 16px;  /* 内側の余白 */
+    background-color: #fff;  /* 白背景 */
+    border: 1px solid #ff5757;  /* 赤枠 */
+    border-radius: 20px;  /* 角を丸く */
+    color: #ff5757;  /* 赤文字 */
+    font-size: 12px;
+    cursor: pointer;  /* カーソルをポインターに */
+}
+
+.category-tag:hover {
+    background-color: #ff5757;  /* ホバー時に赤背景 */
+    color: #fff;  /* ホバー時に白文字 */
+}
+
+/* 選択中のカテゴリータグ */
+.category-tag.active {
+    background-color: #ff5757;  /* 赤背景 */
+    color: #fff;  /* 白文字 */
+}
+
+/* セレクトボックス */
+.form-select {
+    width: 100%;  /* 幅いっぱい */
+    padding: 12px;  /* 内側の余白 */
+    font-size: 14px;
+    border: 1px solid #ccc;  /* グレーの枠線 */
+    border-radius: 4px;  /* 角を丸く */
+    background-color: #fff;  /* 白背景 */
+    cursor: pointer;  /* カーソルをポインターに */
+}
+
+/* 入力欄 */
+.form-input {
+    width: 100%;  /* 幅いっぱい */
+    padding: 12px;  /* 内側の余白 */
+    font-size: 14px;
+    border: 1px solid #ccc;  /* グレーの枠線 */
+    border-radius: 4px;  /* 角を丸く */
+}
+
+/* テキストエリア */
+.form-textarea {
+    width: 100%;  /* 幅いっぱい */
+    min-height: 150px;  /* 最小高さ */
+    padding: 12px;  /* 内側の余白 */
+    font-size: 14px;
+    border: 1px solid #ccc;  /* グレーの枠線 */
+    border-radius: 4px;  /* 角を丸く */
+    resize: vertical;  /* 縦方向のみリサイズ可能 */
+    font-family: inherit;  /* フォントを継承 */
+}
+
+/* 出品ボタン */
+.submit-button {
+    width: 100%;  /* 幅いっぱい */
+    padding: 15px;  /* 内側の余白 */
+    background-color: #ff5757;  /* 赤背景 */
+    color: #fff;  /* 白文字 */
+    border: none;  /* 枠線なし */
+    border-radius: 4px;  /* 角を丸く */
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;  /* カーソルをポインターに */
+    margin-top: 20px;  /* 上に余白 */
+}
+
+.submit-button:hover {
+    background-color: #ff3d3d;  /* ホバー時により濃い赤 */
+}
+
+/* レスポンシブ対応：タブレット */
+@media (max-width: 768px) {
+    .sell-container {
+        max-width: 90%;  /* 幅を広げる */
+        margin: 30px auto;  /* 上下の余白を少なく */
+    }
+}
+
+/* レスポンシブ対応：スマホ */
+@media (max-width: 480px) {
+    .sell-container {
+        padding: 15px;  /* 内側の余白を少なく */
+    }
+    
+    .page-title {
+        font-size: 20px;  /* タイトルを小さく */
+        margin-bottom: 30px;  /* 下の余白を少なく */
+    }
+    
+    .section-title {
+        font-size: 16px;  /* セクションタイトルを小さく */
+    }
+    
+    .image-upload-area {
+        padding: 30px 20px;  /* パディングを少なく */
+    }
+    
+    .form-section {
+        margin-bottom: 30px;  /* セクション間の余白を少なく */
+        padding-bottom: 20px;  /* 下の余白を少なく */
+    }
+    
+    .category-tags {
+        gap: 8px;  /* タグ間の隙間を少なく */
+    }
+    
+    .category-tag {
+        padding: 6px 12px;  /* タグを小さく */
+        font-size: 11px;  /* 文字を小さく */
+    }
+}

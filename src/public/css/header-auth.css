@@ -1,0 +1,157 @@
+/* ヘッダー全体 - 黒背景 */
+.auth-header {
+    background-color: #000;
+    padding: 5px 20px;  /* 上下10px、左右20pxの余白 */
+    margin: 0;  /* ヘッダーの余白を完全にリセット */
+}
+
+/* ヘッダーコンテナ - 3カラムレイアウト(左・中央・右) */
+.header-container {
+    display: flex;  /* フレックスボックスで横並び */
+    align-items: center;  /* 子要素を縦方向で中央揃え */
+    justify-content: space-between;  /* 子要素を両端に配置(左端・中央・右端) */
+    max-width: 1200px;  /* 最大幅を制限 */
+    margin: 0 auto;  /* 中央寄せ */
+}
+
+/* ヘッダー左側 - ロゴ配置 */
+.header-left {
+    margin-right: 40px;  /* 右側に余白 */
+}
+
+.header-left img {
+    height: 30px;  /* ロゴの高さ */
+    display: block;  /* インライン要素の隙間を削除 */
+}
+
+/* ヘッダー中央 - 検索ボックス配置 */
+.header-center {
+    flex: 1;  /* 余った空間を全て使う（伸縮可能） */
+    margin: 0;  /* 余白をリセット */
+}
+
+/* 検索ボックス */
+.search-box {
+    width: 100%;  /* 親要素の幅いっぱい */
+    max-width: 500px;  /* 最大幅500px */
+    padding: 8px 15px;  /* 内側の余白 */
+    font-size: 14px;
+    border: none;
+    border-radius: 4px;  /* 角を丸く */
+    background-color: #fff;  /* 白背景 */
+}
+
+/* ヘッダー右側 - ナビゲーションリンク配置 */
+.header-right {
+    display: flex;  /* 中の要素を横並び */
+    align-items: center;  /* 縦方向中央揃え */
+    gap: 20px;  /* 各要素の間に20pxの隙間 */
+}
+
+/* ヘッダーリンク（ログアウト、マイページ） */
+.header-link {
+    color: #fff;  /* 白文字 */
+    text-decoration: none;  /* 下線なし */
+    font-size: 14px;
+}
+
+.header-link:hover {
+    text-decoration: underline;  /* ホバー時に下線表示 */
+}
+
+/* 出品ボタン */
+.sell-button {
+    padding: 8px 20px;
+    color: #fff;  /* 白文字 */
+    background-color: transparent;  /* 背景透明 */
+    border: 1px solid #fff;  /* 白枠 */
+    border-radius: 4px;  /* 角を丸く */
+    text-decoration: none;  /* 下線なし */
+    font-size: 14px;
+}
+
+.sell-button:hover {
+    background-color: rgba(255, 255, 255, 0.1);  /* ホバー時に薄く白い背景 */
+}
+
+/* レスポンシブ対応：タブレット */
+@media (max-width: 1024px) {
+    .header-container {
+        padding: 0 15px;  /* 左右の余白を少なく */
+    }
+    
+    .search-box {
+        max-width: 400px;  /* 検索ボックスを少し小さく */
+    }
+}
+
+/* レスポンシブ対応：タブレット・スマホ */
+@media (max-width: 768px) {
+    .auth-header {
+        padding: 8px 20px;  /* 上下の余白を少なく */
+    }
+    
+    .header-container {
+        gap: 10px;  /* 要素間の隙間を少なく */
+    }
+    
+    .header-left {
+        margin-right: 15px;  /* 右側の余白を少なく */
+    }
+    
+    .header-left img {
+        height: 25px;  /* ロゴを小さく */
+    }
+    
+    .search-box {
+        max-width: 300px;  /* 検索ボックスをさらに小さく */
+        font-size: 13px;  /* 文字を小さく */
+        padding: 6px 12px;  /* パディングを少なく */
+    }
+    
+    .header-right {
+        gap: 15px;  /* リンク間の隙間を少なく */
+    }
+    
+    .header-right a,
+    .header-link,
+    .sell-button {
+        font-size: 13px;  /* リンク文字を小さく */
+    }
+    
+    .sell-button {
+        padding: 6px 15px;  /* ボタンを小さく */
+    }
+}
+
+/* レスポンシブ対応：スマホ */
+@media (max-width: 480px) {
+    .auth-header {
+        padding: 8px 15px;  /* パディングをさらに少なく */
+    }
+    
+    .header-container {
+        flex-wrap: wrap;  /* 折り返しを許可 */
+        justify-content: center;  /* 中央揃え */
+    }
+    
+    .header-left {
+        order: 1;  /* ロゴを最初に */
+        margin-right: auto;  /* 右に余白 */
+    }
+    
+    .header-right {
+        order: 2;  /* ナビを2番目に */
+        gap: 10px;  /* 隙間をさらに少なく */
+    }
+    
+    .header-center {
+        order: 3;  /* 検索を最後に */
+        width: 100%;  /* 幅いっぱい */
+        margin-top: 10px;  /* 上に余白 */
+    }
+    
+    .search-box {
+        max-width: 100%;  /* 幅いっぱい */
+    }
+}

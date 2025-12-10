@@ -1,0 +1,126 @@
+/* プロフィール編集画面全体のコンテナ */
+.profile-edit-container {
+    max-width: 600px;  /* 最大幅600px */
+    margin: 40px auto;  /* 上下40px、左右中央寄せ */
+    padding: 20px;  /* 内側の余白 */
+}
+
+/* プロフィール設定タイトル */
+.profile-title {
+    font-size: 24px;
+    font-weight: bold;
+    text-align: center;  /* 中央揃え */
+    margin-bottom: 40px;  /* 下に余白 */
+}
+
+/* プロフィール画像セクション */
+.profile-image-section {
+    text-align: center;  /* 中央揃え */
+    margin-bottom: 40px;  /* 下に余白 */
+}
+
+/* プロフィール画像プレビュー（円形） */
+.profile-image-preview {
+    width: 150px;  /* 幅150px */
+    height: 150px;  /* 高さ150px */
+    margin: 0 auto 20px;  /* 中央寄せ、下に余白 */
+    border-radius: 50%;  /* 円形にする */
+    background-color: #d3d3d3;  /* デフォルトのグレー背景 */
+    overflow: hidden;  /* はみ出た部分を隠す */
+    display: flex;  /* フレックスボックス */
+    align-items: center;  /* 縦方向中央揃え */
+    justify-content: center;  /* 横方向中央揃え */
+}
+
+/* プロフィール画像 */
+.profile-image-preview img {
+    width: 100%;  /* 幅いっぱい */
+    height: 100%;  /* 高さいっぱい */
+    object-fit: cover;  /* アスペクト比を保って覆う */
+}
+
+/* 画像アップロードボタン */
+.image-upload-button {
+    display: inline-block;  /* インラインブロック要素 */
+    padding: 8px 20px;  /* 内側の余白 */
+    font-size: 14px;
+    color: #ff5757;  /* 赤文字 */
+    border: 1px solid #ff5757;  /* 赤枠 */
+    border-radius: 4px;  /* 角を丸く */
+    cursor: pointer;  /* カーソルをポインターに */
+    background-color: #fff;  /* 白背景 */
+}
+
+/* 画像アップロードボタンのホバー状態 */
+.image-upload-button:hover {
+    background-color: #fff5f5;  /* 薄いピンク背景 */
+}
+
+/* フォーム入力グループ */
+.form-group {
+    margin-bottom: 25px;  /* 各グループの下に余白 */
+}
+
+/* フォームラベル */
+.form-group label {
+    display: block;  /* ブロック要素として表示 */
+    font-size: 14px;
+    font-weight: bold;  /* 太字 */
+    margin-bottom: 8px;  /* ラベルと入力欄の間に余白 */
+}
+
+/* フォーム入力欄 */
+.form-group input {
+    width: 100%;  /* 幅いっぱい */
+    padding: 10px;  /* 内側の余白 */
+    font-size: 14px;
+    border: 1px solid #ccc;  /* グレーの枠線 */
+    border-radius: 4px;  /* 角を丸く */
+}
+
+/* 更新ボタン */
+.update-button {
+    width: 100%;  /* 幅いっぱい */
+    padding: 12px;  /* 内側の余白 */
+    font-size: 16px;
+    color: #fff;  /* 白文字 */
+    background-color: #ff5757;  /* 赤背景 */
+    border: none;  /* 枠線なし */
+    border-radius: 4px;  /* 角を丸く */
+    cursor: pointer;  /* カーソルをポインターに */
+    margin-top: 20px;  /* 上に余白 */
+}
+
+/* 更新ボタンのホバー状態 */
+.update-button:hover {
+    background-color: #ff3d3d;  /* より濃い赤 */
+}
+
+/* レスポンシブ対応：タブレット */
+@media (max-width: 768px) {
+    .profile-edit-container {
+        max-width: 90%;  /* 幅を広げる */
+        padding: 15px;  /* 内側の余白を少なく */
+    }
+}
+
+/* レスポンシブ対応：スマホ */
+@media (max-width: 480px) {
+    .profile-edit-container {
+        margin: 30px auto;  /* 上下の余白を少なく */
+    }
+    
+    .profile-title {
+        font-size: 20px;  /* タイトルを小さく */
+        margin-bottom: 30px;  /* 下の余白を少なく */
+    }
+    
+    .profile-image-preview {
+        width: 120px;  /* プロフィール画像を小さく */
+        height: 120px;
+    }
+    
+    .form-group {
+        margin-bottom: 20px;  /* グループ間の余白を少なく */
+    }
+}
