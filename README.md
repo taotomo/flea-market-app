@@ -3,15 +3,20 @@
 ## ER図
 ```mermaid
 erDiagram
-  categories ||--o{ items: ""
-  conditions ||--o{ items: ""
-  users ||--o{ items: ""
-  users ||--o{ favorites: ""
-  users ||--o{ comments: ""
-  users ||--o{ purchases: ""
-  items ||--o{ favorites: ""
-  items ||--o{ comments: ""
-  items ||--|| purchases: ""
+
+  categories {
+    bigint id PK
+    varchar(255) name "NOT NULL"
+    timestamp created_at "NOT NULL"
+    timestamp updated_at "NOT NULL"
+  }
+
+  conditions {
+    bigint id PK
+    varchar(255) name "NOT NULL"
+    timestamp created_at "NOT NULL"
+    timestamp updated_at "NOT NULL"
+  }
 
   users {
     bigint id PK
@@ -41,32 +46,6 @@ erDiagram
     timestamp updated_at "NOT NULL"
   }
 
-  categories {
-    bigint id PK
-    varchar(255) name "NOT NULL"
-    timestamp created_at "NOT NULL"
-    timestamp updated_at "NOT NULL"
-  }
-
-  conditions {
-    bigint id PK
-    varchar(255) name "NOT NULL"
-    timestamp created_at "NOT NULL"
-    timestamp updated_at "NOT NULL"
-  }
-
-  purchases {
-    bigint id PK
-    bigint item_id FK "NOT NULL"
-    bigint buyer_id FK "NOT NULL"
-    varchar(50) payment_method "NOT NULL"
-    varchar(8) postal_code "NOT NULL"
-    varchar(255) address "NOT NULL"
-    varchar(255) building
-    timestamp created_at "NOT NULL"
-    timestamp updated_at "NOT NULL"
-  }
-
   favorites {
     bigint id PK
     bigint user_id FK "NOT NULL"
@@ -83,6 +62,28 @@ erDiagram
     timestamp created_at "NOT NULL"
     timestamp updated_at "NOT NULL"
   }
+
+  purchases {
+    bigint id PK
+    bigint item_id FK "NOT NULL"
+    bigint buyer_id FK "NOT NULL"
+    varchar(50) payment_method "NOT NULL"
+    varchar(8) postal_code "NOT NULL"
+    varchar(255) address "NOT NULL"
+    varchar(255) building
+    timestamp created_at "NOT NULL"
+    timestamp updated_at "NOT NULL"
+  }
+
+  categories ||--o{ items: ""
+  conditions ||--o{ items: ""
+  users ||--o{ items: ""
+  users ||--o{ favorites: ""
+  users ||--o{ comments: ""
+  users ||--o{ purchases: ""
+  items ||--o{ favorites: ""
+  items ||--o{ comments: ""
+  items ||--|| purchases: ""
 ```
 
 ## テーブル設計
