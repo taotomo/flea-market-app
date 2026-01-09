@@ -3,24 +3,28 @@
 @section('title', '商品の出品')
 
 @section('styles')
-    <link rel="stylesheet" href="{{ asset('css/sell.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/sell.css') }}?v={{ time() }}">
 @endsection
 
 @section('content')
     <div class="sell-container">
         <h1 class="page-title">商品の出品</h1>
         
-        <form action="" method="POST" enctype="multipart/form-data">
+        <form action="{{ route('items.store') }}" method="POST" enctype="multipart/form-data" novalidate>
             @csrf
             <!-- 商品画像 -->
             <div class="form-section">
                 <label class="section-label">商品画像</label>
-                <div class="image-upload-area">
+                <div class="image-upload-area" id="imageUploadArea">
+                    <img id="imagePreview" src="" alt="プレビュー" style="display: none; max-width: 100%; max-height: 300px; margin-bottom: 10px;">
                     <label for="image" class="upload-label">
                         画像を選択する
                     </label>
                     <input type="file" id="image" name="image" accept="image/*" style="display: none;">
                 </div>
+                @error('image')
+                    <p class="error-message">{{ $message }}</p>
+                @enderror
             </div>
             
             <!-- 商品の詳細 -->
@@ -29,33 +33,29 @@
                 <div class="form-group">
                     <label>カテゴリー</label>
                     <div class="category-tags">
-                        <span class="category-tag">ファッション</span>
-                        <span class="category-tag">家電</span>
-                        <span class="category-tag">インテリア</span>
-                        <span class="category-tag">レディース</span>
-                        <span class="category-tag">メンズ</span>
-                        <span class="category-tag">コスメ</span>
-                        <span class="category-tag">本</span>
-                        <span class="category-tag">ゲーム</span>
-                        <span class="category-tag">スポーツ</span>
-                        <span class="category-tag">キッチン</span>
-                        <span class="category-tag">ハンドメイド</span>
-                        <span class="category-tag">アクセサリー</span>
-                        <span class="category-tag">おもちゃ</span>
-                        <span class="category-tag">ベビー・キッズ</span>
+                        @foreach($categories as $category)
+                            <label class="category-tag">
+                                <input type="checkbox" name="categories[]" value="{{ $category->id }}" class="category-checkbox">
+                                <span>{{ $category->name }}</span>
+                            </label>
+                        @endforeach
                     </div>
+                    @error('categories')
+                        <p class="error-message">{{ $message }}</p>
+                    @enderror
                 </div>
                 
                 <div class="form-group">
-                    <label for="condition">商品の状態</label>
-                    <select id="condition" name="condition" class="form-select">
+                    <label for="condition_id">商品の状態</label>
+                    <select id="condition_id" name="condition_id" class="form-select">
                         <option value="">選択してください</option>
-                        <option value="new">新品、未使用</option>
-                        <option value="like_new">未使用に近い</option>
-                        <option value="good">目立った傷や汚れなし</option>
-                        <option value="fair">やや傷や汚れあり</option>
-                        <option value="poor">傷や汚れあり</option>
+                        @foreach($conditions as $condition)
+                            <option value="{{ $condition->id }}">{{ $condition->name }}</option>
+                        @endforeach
                     </select>
+                    @error('condition_id')
+                        <p class="error-message">{{ $message }}</p>
+                    @enderror
                 </div>
             </div>
             
@@ -65,26 +65,54 @@
                 
                 <div class="form-group">
                     <label for="name">商品名</label>
-                    <input type="text" id="name" name="name" class="form-input">
+                    <input type="text" id="name" name="name" class="form-input" value="{{ old('name') }}">
+                    @error('name')
+                        <p class="error-message">{{ $message }}</p>
+                    @enderror
                 </div>
                 
                 <div class="form-group">
                     <label for="brand">ブランド名</label>
-                    <input type="text" id="brand" name="brand" class="form-input">
+                    <input type="text" id="brand" name="brand" class="form-input" value="{{ old('brand') }}">
+                    @error('brand')
+                        <p class="error-message">{{ $message }}</p>
+                    @enderror
                 </div>
                 
                 <div class="form-group">
                     <label for="description">商品の説明</label>
-                    <textarea id="description" name="description" class="form-textarea"></textarea>
+                    <textarea id="description" name="description" class="form-textarea">{{ old('description') }}</textarea>
+                    @error('description')
+                        <p class="error-message">{{ $message }}</p>
+                    @enderror
                 </div>
                 
                 <div class="form-group">
                     <label for="price">販売価格</label>
-                    <input type="number" id="price" name="price" class="form-input" placeholder="¥">
+                    <input type="number" id="price" name="price" class="form-input" placeholder="¥" value="{{ old('price') }}">
+                    @error('price')
+                        <p class="error-message">{{ $message }}</p>
+                    @enderror
                 </div>
             </div>
             
             <button type="submit" class="submit-button">出品する</button>
         </form>
     </div>
+
+    <script>
+        // 画像プレビュー機能
+        document.getElementById('image').addEventListener('change', function(e) {
+            const file = e.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    const preview = document.getElementById('imagePreview');
+                    preview.src = e.target.result;
+                    preview.style.display = 'block';
+                }
+                reader.readAsDataURL(file);
+            }
+        });
+    </script>
 @endsection

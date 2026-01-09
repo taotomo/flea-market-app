@@ -36,14 +36,19 @@ erDiagram
     bigint id PK
     bigint user_id FK "NOT NULL"
     varchar(255) name "NOT NULL"
+    varchar(255) brand
     text description "NOT NULL"
     int price "NOT NULL"
     varchar(255) image "NOT NULL"
     bigint condition_id FK "NOT NULL"
-    bigint category_id FK "NOT NULL"
     boolean is_sold "NOT NULL"
     timestamp created_at "NOT NULL"
     timestamp updated_at "NOT NULL"
+  }
+
+  category_item {
+    bigint category_id PK,FK "NOT NULL"
+    bigint item_id PK,FK "NOT NULL"
   }
 
   favorites {
@@ -75,7 +80,8 @@ erDiagram
     timestamp updated_at "NOT NULL"
   }
 
-  categories ||--o{ items: ""
+  categories ||--o{ category_item: ""
+  items ||--o{ category_item: ""
   conditions ||--o{ items: ""
   users ||--o{ items: ""
   users ||--o{ favorites: ""
@@ -109,11 +115,11 @@ erDiagram
 | id | bigint unsigned | NO | PK | 自動増分 |
 | user_id | bigint unsigned | NO | FK | 出品者ID |
 | name | varchar(255) | NO | | 商品名 |
+| brand | varchar(255) | YES | | ブランド名 |
 | description | text | NO | | 商品説明 |
 | price | int unsigned | NO | | 価格 |
 | image | varchar(255) | NO | | 商品画像パス |
 | condition_id | bigint unsigned | NO | FK | 商品の状態ID |
-| category_id | bigint unsigned | NO | FK | カテゴリーID |
 | is_sold | boolean | NO | | 売却済みフラグ (0:未売却, 1:売却済) |
 | created_at | timestamp | NO | | 作成日時 |
 | updated_at | timestamp | NO | | 更新日時 |
@@ -166,6 +172,14 @@ erDiagram
 | created_at | timestamp | NO | | 作成日時 |
 | updated_at | timestamp | NO | | 更新日時 |
 
+### 8. category_item (商品カテゴリ中間テーブル)
+| カラム名 | 型 | NULL | キー | 備考 |
+|---------|-----|------|------|------|
+| category_id | bigint unsigned | NO | PK, FK | カテゴリID |
+| item_id | bigint unsigned | NO | PK, FK | 商品ID |
+
+**注記:** 複合主キー (category_id, item_id)、timestampsなし
+
 ## リレーション
 - users → items (1対多: 1人が複数商品を出品)
 - users → purchases (1対多: 1人が複数購入)
@@ -174,5 +188,5 @@ erDiagram
 - items → purchases (1対1: 1商品に1購入)
 - items → favorites (1対多: 1商品に複数いいね)
 - items → comments (1対多: 1商品に複数コメント)
-- categories → items (1対多: 1カテゴリーに複数商品)
+- **items ↔ categories (多対多: 1商品に複数カテゴリ、1カテゴリに複数商品)** ※中間テーブル: category_item
 - conditions → items (1対多: 1状態に複数商品)

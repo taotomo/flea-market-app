@@ -10,17 +10,23 @@
     <div class="login-container">
         <h1 class="login-title">ログイン</h1>
         
-        <form action="" method="POST">
+        <form action="{{ route('login') }}" method="POST" novalidate>
             @csrf
             
             <div class="form-group">
                 <label for="email">メールアドレス</label>
-                <input type="email" id="email" name="email" required>
+                <input type="email" id="email" name="email" value="{{ old('email') }}" required>
+                @error('email')
+                    <span class="error-message">{{ $message }}</span>
+                @enderror
             </div>
             
             <div class="form-group">
                 <label for="password">パスワード</label>
                 <input type="password" id="password" name="password" required>
+                @error('password')
+                    <span class="error-message">{{ $message }}</span>
+                @enderror
             </div>
             
             <button type="submit" class="login-button">ログインする</button>
