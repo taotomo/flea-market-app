@@ -2,7 +2,7 @@
 .mypage-container {
     max-width: 1200px;
     margin: 0 auto;
-    padding: 40px 20px;
+    padding: 50px 30px;
 }
 
 /* プロフィールセクション */
@@ -110,18 +110,23 @@
 .items-grid {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    gap: 20px;
+    gap: 30px;
 }
 
 .item-card {
     cursor: pointer;
-    transition: transform 0.3s;
+    transition: transform 0.3s, box-shadow 0.3s;
     text-decoration: none;
     position: relative;
+    background-color: #fff;
+    border-radius: 12px;
+    padding: 15px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
 }
 
 .item-card:hover {
-    transform: translateY(-5px);
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.12);
 }
 
 .item-image {
@@ -129,7 +134,7 @@
     aspect-ratio: 1;
     object-fit: cover;
     border-radius: 8px;
-    margin-bottom: 10px;
+    margin-bottom: 12px;
 }
 
 .item-image-placeholder {
@@ -160,12 +165,15 @@
 .item-name {
     font-size: 14px;
     color: #333;
+    font-weight: 500;
+    line-height: 1.4;
+    margin: 0;
 }
 
 /* 商品がない場合のメッセージ */
 .no-items {
     text-align: center;
-    padding: 60px 20px;
+    padding: 80px 20px;
     color: #999;
     font-size: 16px;
 }
@@ -173,7 +181,7 @@
 /* レスポンシブ対応：タブレット */
 @media (max-width: 850px) {
     .items-grid {
-        grid-template-columns: repeat(3, 1fr);
+        grid-template-columns: repeat(4, 1fr);
     }
 }
 
@@ -187,7 +195,7 @@
     }
 
     .items-grid {
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns: repeat(4, 1fr);
         gap: 15px;
     }
 
@@ -219,11 +227,10 @@
 }
 
 .items-grid {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(4, 1fr);
     gap: 10px;
 }
 
 .item-name {
     font-size: 12px;
-}
 }

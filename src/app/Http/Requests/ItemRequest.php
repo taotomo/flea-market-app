@@ -23,15 +23,17 @@ class ItemRequest extends FormRequest
      */
     public function rules()
     {
+        $config = config('validation.item');
+        
         return [
-            'image' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
+            'image' => 'required|image|max:' . $config['image_size'],
             'categories' => 'required|array|min:1',
             'categories.*' => 'exists:categories,id',
-            'condition_id' => 'required|exists:conditions,id',
-            'name' => 'required|string|max:255',
-            'brand' => 'nullable|string|max:255',
-            'description' => 'required|string|max:1000',
-            'price' => 'required|integer|min:1|max:9999999'
+            'condition' => 'required|exists:conditions,id',
+            'name' => 'required|string|max:' . $config['name_max_length'],
+            'brand' => 'nullable|string|max:' . $config['brand_max_length'],
+            'description' => 'required|string|max:' . $config['description_max_length'],
+            'price' => 'required|integer|min:' . $config['price_min'] . '|max:' . $config['price_max'],
         ];
     }
 

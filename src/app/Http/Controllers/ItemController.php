@@ -11,41 +11,52 @@ class ItemController extends Controller
     // 商品一覧画面表示
     public function index(Request $request)
     {
-        $tab = $request->query('tab', 'all'); // デフォルトは全商品
-        $search = $request->query('search', ''); // 検索キーワード
+        $tab = $request->query('tab', 'all');
+        $search = $request->query('search', '');
         
-        if ($tab === 'mylist') {
-            // マイリスト（いいねした商品）
-            if (Auth::check()) {
-                $query = Auth::user()->favoriteItems()->with('purchase');
-                
-                // 検索キーワードがあれば絞り込み
-                if ($search) {
-                    $query->where('name', 'LIKE', '%' . $search . '%');
-                }
-                
-                $items = $query->get();
-            } else {
-                $items = collect(); // 未認証の場合は空のコレクション
-            }
-        } else {
-            // 全商品（自分が出品した商品は除外）
-            if (Auth::check()) {
-                $query = Item::where('user_id', '!=', Auth::id())->with('purchase');
-            } else {
-                // 未認証の場合は全商品を表示
-                $query = Item::with('purchase');
-            }
-            
-            // 検索キーワードがあれば絞り込み
-            if ($search) {
-                $query->where('name', 'LIKE', '%' . $search . '%');
-            }
-            
-            $items = $query->get();
-        }
+        $items = $this->getItemsByTab($tab, $search);
         
         return view('item-list', compact('items', 'tab', 'search'));
+    }
+
+    // タブ別の商品取得
+    private function getItemsByTab($tab, $search)
+    {
+        if ($tab === 'mylist') {
+            return $this->getMylistItems($search);
+        }
+        
+        return $this->getAllItems($search);
+    }
+
+    // マイリスト商品取得
+    private function getMylistItems($search)
+    {
+        if (!Auth::check()) {
+            return collect();
+        }
+        
+        $query = Auth::user()->favoriteItems()->with('purchase');
+        
+        if ($search) {
+            $query->where('name', 'LIKE', '%' . $search . '%');
+        }
+        
+        return $query->get();
+    }
+
+    // 全商品取得
+    private function getAllItems($search)
+    {
+        $query = Auth::check() 
+            ? Item::where('user_id', '!=', Auth::id())->with('purchase')
+            : Item::with('purchase');
+        
+        if ($search) {
+            $query->where('name', 'LIKE', '%' . $search . '%');
+        }
+        
+        return $query->get();
     }
 
     // 商品詳細画面表示
@@ -172,7 +183,7 @@ class ItemController extends Controller
         // 商品を作成
         $item = Item::create([
             'user_id' => Auth::id(),
-            'condition_id' => $request->condition_id,
+            'condition_id' => $request->condition, // conditionフィールドを使用
             'name' => $request->name,
             'brand' => $request->brand,
             'description' => $request->description,

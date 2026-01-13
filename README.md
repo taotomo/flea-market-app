@@ -1,4 +1,71 @@
-# flea-market-app
+# フリーマーケットアプリ
+
+フリーマーケットアプリは、ユーザー間で中古商品の売買ができるWebアプリケーションです。商品の出品、購入、お気に入り機能、コメント機能を提供しています。
+
+## 環境構築
+
+### Dockerビルド
+```bash
+git clone https://github.com/your-repository/flea-market-app.git
+cd flea-market-app
+docker-compose up -d --build
+```
+
+### Laravel環境構築
+```bash
+# PHPコンテナに入る
+docker-compose exec php bash
+
+# Composer依存関係のインストール
+composer install
+
+# 環境変数ファイルの準備
+cp .env.example .env
+# .envファイルのDB設定を以下に変更：
+# DB_HOST=mysql
+# DB_DATABASE=laravel_db
+# DB_USERNAME=laravel_user
+# DB_PASSWORD=laravel_pass
+
+# アプリケーションキーの生成
+php artisan key:generate
+
+# データベースマイグレーション
+php artisan migrate
+
+# 初期データの投入
+php artisan db:seed
+```
+
+## URL
+
+### 開発環境
+- アプリケーション: http://localhost/
+- ユーザー登録: http://localhost/register
+- ユーザーログイン: http://localhost/login
+- 商品出品: http://localhost/sell
+- phpMyAdmin: http://localhost:8080/
+- Mailhog: http://localhost:8025/
+
+## 使用技術（実行環境）
+
+- **PHP**: 8.1
+- **Laravel**: 9.x
+- **MySQL**: 8.0
+- **nginx**: 1.21
+- **Docker**: 20.x
+- **Docker Compose**: 2.x
+
+## 主要機能
+
+- ユーザー認証（登録・ログイン・メール認証）
+- 商品の出品・編集・削除
+- 商品の検索・絞り込み
+- 商品の購入
+- お気に入り機能
+- コメント機能
+- プロフィール編集
+- 購入履歴・出品履歴の閲覧
 
 ## ER図
 ```mermaid

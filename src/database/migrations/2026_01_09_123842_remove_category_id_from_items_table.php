@@ -14,8 +14,9 @@ class RemoveCategoryIdFromItemsTable extends Migration
     public function up()
     {
         Schema::table('items', function (Blueprint $table) {
-            // category_idカラムを削除（外部キー制約がない場合）
+            // 外部キー制約を先に削除
             if (Schema::hasColumn('items', 'category_id')) {
+                $table->dropForeign(['category_id']);
                 $table->dropColumn('category_id');
             }
         });

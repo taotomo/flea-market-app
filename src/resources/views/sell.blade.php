@@ -16,7 +16,7 @@
             <div class="form-section">
                 <label class="section-label">商品画像</label>
                 <div class="image-upload-area" id="imageUploadArea">
-                    <img id="imagePreview" src="" alt="プレビュー" style="display: none; max-width: 100%; max-height: 300px; margin-bottom: 10px;">
+                    <img id="imagePreview" src="" alt="プレビュー" style="display: none;">
                     <label for="image" class="upload-label">
                         画像を選択する
                     </label>
@@ -46,14 +46,14 @@
                 </div>
                 
                 <div class="form-group">
-                    <label for="condition_id">商品の状態</label>
-                    <select id="condition_id" name="condition_id" class="form-select">
+                    <label for="condition">商品の状態</label>
+                    <select id="condition" name="condition" class="form-select">
                         <option value="">選択してください</option>
                         @foreach($conditions as $condition)
                             <option value="{{ $condition->id }}">{{ $condition->name }}</option>
                         @endforeach
                     </select>
-                    @error('condition_id')
+                    @error('condition')
                         <p class="error-message">{{ $message }}</p>
                     @enderror
                 </div>
