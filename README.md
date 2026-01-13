@@ -6,7 +6,7 @@
 
 ### Dockerビルド
 ```bash
-git clone https://github.com/your-repository/flea-market-app.git
+git clone https://github.com/taotomo/flea-market-app
 cd flea-market-app
 docker-compose up -d --build
 ```
